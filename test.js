@@ -12,15 +12,12 @@ Scratch.UserSession.create(username, password, function(err, user) {
         user.cloudSession(firstProjectId, function(err, firstcloud) {
             user.cloudSession(secondProjectId, function(err, secondcloud) {
                 firstcloud.on('set', function(name, value) {
-                    if (name === '☁ ' + firstName && !bridgeUsers[myi].blocked) {
-                        secondcloud.set('☁ ' + secondName, value);
-                        bridgeUsers[myi].count++
-                    }
+                    if (name === '☁ ' + firstName) {
+                        secondcloud.set('☁ ' + secondName, value);                    }
                 });
                 secondcloud.on('set', function(name, value) {
                     if (name === '☁ ' + secondName) {
                         firstcloud.set('☁ ' + secondName, value);
-                        bridgeUsers[myi].count++
                     }
                 });
             });
