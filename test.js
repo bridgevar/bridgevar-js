@@ -1,5 +1,5 @@
 var Scratch = require('scratch-api');
-var bridgeUsers = require('./users.js')
+var bridgeUsers = require('./users.json')
 var username = 'bridgevar';
 var password = 'password';
 Scratch.UserSession.create(username, password, function(err, user) {
