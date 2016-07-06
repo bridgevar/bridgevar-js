@@ -1,3 +1,2 @@
-{
-"users": [{"firstProjectId": 115557663, "secondProjectId": 115557644, "firstName": "bridgeVar", "secondName": "bridgeVar"}]
-}
+module.exports.bridgeUser = [{"firstProjectId": 115557663, "secondProjectId": 115557644, "firstName": "bridgeVar", "secondName": "bridgeVar"}]
+
