@@ -1,9 +1,15 @@
 var Scratch = require('scratch-api');
 var bridgeUsers = require('./users.json');
-var statusId = 115628457;
-var serverId = '☁ server1timestamp'
-var username = 'bridgevar';
+const statusId = 115628457;
+const serverNo = 1; //0 based indexing plz
+const serverId = '☁ server' + serverNo + 'timestamp'
+const username = 'bridgevar';
 var password = 'password';
+var calculateVars = function(){
+    var orders = bridgeUsers.length;
+    var start = Math.ceil(orders/servers) * serverNo;
+    var end = Math.ceil(orders/servers) * (serverNo + 1);
+}
 var createBridges = function(start, end) {
     for (var i=start; i<end; i++) {
         var firstProjectId = bridgeUsers.users[i].firstProjectId;
@@ -26,6 +32,7 @@ var createBridges = function(start, end) {
             });
         });
     }
+    
 }
 Scratch.UserSession.create(username, password, function(err, user) {
     user.cloudSession(statusId, function(err, statusSession) {
