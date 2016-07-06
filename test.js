@@ -26,6 +26,7 @@ var createBridges = function(start, end) {
             });
         });
     }
+    
 }
 Scratch.UserSession.create(username, password, function(err, user) {
     user.cloudSession(statusId, function(err, statusSession) {
