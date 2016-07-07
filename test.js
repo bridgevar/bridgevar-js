@@ -6,7 +6,7 @@ var serverId = '☁ server1timestamp'
 var username = 'bridgevar';
 var password = 'password';
 var stream = fs.createWriteStream("./log.txt");
-var createBridges = function(start, end) {
+var createBridges = function(start, end, user) {
     for (var i=start; i<end; i++) {
         var firstProjectId = bridgeUsers.users[i].firstProjectId;
         var secondProjectId = bridgeUsers.users[i].secondProjectId;
@@ -41,5 +41,6 @@ Scratch.UserSession.create(username, password, function(err, user) {
     user.cloudSession(statusId, function(err, statusSession) {
         var pulse = function(session) {session.set(serverId, Date.now()); setTimeout(pulse, 50000, session)};
         pulse(statusSession);
+        createBridges(0,1,user)
     });
 });
