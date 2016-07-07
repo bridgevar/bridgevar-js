@@ -5,7 +5,7 @@ var statusId = 115628457;
 var serverId = '☁ server1timestamp'
 var username = 'bridgevar';
 var password = 'password';
-var stream = fs.createWriteStream("./log.txt");
+var val = "";
 var createBridges = function(start, end, user) {
     for (var i=start; i<end; i++) {
         var firstProjectId = bridgeUsers.users[i].firstProjectId;
@@ -17,24 +17,21 @@ var createBridges = function(start, end, user) {
             user.cloudSession(secondProjectId, function(err, secondcloud) {
                 firstcloud.on('set', function(name, value) {
                     if (name === '☁ ' + firstName) {
-                        var val = value;
+                        val = value.toString();
                         secondcloud.set('☁ ' + secondName, value);
                     }
                 });
                 secondcloud.on('set', function(name, value) {
                     if (name === '☁ ' + secondName) {
-                        var val = value;
+                        val = value.toString();
                         firstcloud.set('☁ ' + secondName, value);
                     }
                 });
             });
         });
-        stream.once('open', function(fd) {
-            var today = new Date();
-            var UTCstring = today.toUTCString();
-            stream.write("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + val + "\n");
-            stream.end();
-        });
+        var today = new Date();
+        var UTCstring = today.toUTCString();
+        console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + val + "\n");
     }
 }
 Scratch.UserSession.create(username, password, function(err, user) {
