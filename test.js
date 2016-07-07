@@ -1,5 +1,4 @@
 var Scratch = require('scratch-api');
-var fs = require('fs');
 var bridgeUsers = require('./users.json');
 var statusId = 115628457;
 var serverId = '☁ server1timestamp'
