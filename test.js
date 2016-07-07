@@ -4,7 +4,7 @@ var statusId = 115628457;
 var serverId = '☁ server1timestamp'
 var username = 'bridgevar';
 var password = 'password';
-var createBridges = function(start, end) {
+var createBridges = function(start, end, user) {
     for (var i=start; i<end; i++) {
         var firstProjectId = bridgeUsers.users[i].firstProjectId;
         var secondProjectId = bridgeUsers.users[i].secondProjectId;
@@ -32,4 +32,5 @@ Scratch.UserSession.create(username, password, function(err, user) {
         var pulse = function(session) {session.set(serverId, Date.now()); setTimeout(pulse, 50000, session)};
         pulse(statusSession);
     });
+    createbridges(0,1,user)
 });
