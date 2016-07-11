@@ -1,3 +1,4 @@
+while (1==1){
 var Scratch = require('scratch-api');
 var bridgeUsers = require('./users.json');
 var statusId = 115628457;
@@ -33,3 +34,4 @@ Scratch.UserSession.create(username, password, function(err, user) {
         pulse(statusSession);
     });
 });
+}
