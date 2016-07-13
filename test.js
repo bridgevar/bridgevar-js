@@ -17,7 +17,7 @@ var createBridges = function(start, end, user) {
                 firstcloud.on('set', function(name, value) {
                     if (name === '☁ ' + firstName) {
                         secondcloud.set('☁ ' + secondName, value);
-                        console.log("At " + (new Date).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString() + "\n");
+                        console.log("At " + (new Date).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
                     }
                 });
                 secondcloud.on('set', function(name, value) {
