@@ -18,19 +18,23 @@ var createBridges = function(start, end, user) {
                     if (name === '☁ ' + firstName) {
                         val = value.toString();
                         secondcloud.set('☁ ' + secondName, value);
+                        var today = new Date();
+                        var UTCstring = today.toUTCString();
+                        console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + val + "\n");
                     }
                 });
                 secondcloud.on('set', function(name, value) {
                     if (name === '☁ ' + secondName) {
                         val = value.toString();
                         firstcloud.set('☁ ' + secondName, value);
+                        var today = new Date();
+                        var UTCstring = today.toUTCString();
+                        console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + val + "\n");
                     }
                 });
             });
         });
-        var today = new Date();
-        var UTCstring = today.toUTCString();
-        console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + val + "\n");
+        
     }
 }
 Scratch.UserSession.create(username, password, function(err, user) {
