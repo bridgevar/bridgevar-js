@@ -17,17 +17,13 @@ var createBridges = function(start, end, user) {
                 firstcloud.on('set', function(name, value) {
                     if (name === '☁ ' + firstName) {
                         secondcloud.set('☁ ' + secondName, value);
-                        var today = new Date();
-                        var UTCstring = today.toUTCString();
-                        console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString() + "\n");
+                        console.log("At " + (new Date).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString() + "\n");
                     }
                 });
                 secondcloud.on('set', function(name, value) {
                     if (name === '☁ ' + secondName) {
                         firstcloud.set('☁ ' + firstName, value);
-                        var today = new Date();
-                        var UTCstring = today.toUTCString();
-                        console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString() + "\n");
+                        console.log("At " + (new Date).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
                     }
                 });
             });
