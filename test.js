@@ -20,16 +20,21 @@ var createBridges = function(start, end, user) {
                         secondcloud.set('☁ ' + secondName, value);
                         var today = new Date();
                         var UTCstring = today.toUTCString();
+                        console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + val);
                         console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + val + "\n");
                     }
                 });
                 secondcloud.on('set', function(name, value) {
                     if (name === '☁ ' + secondName) {
                         val = value.toString();
+                        firstcloud.set('☁ ' + firstName, value);
+                        var today = new Date();
+                        var UTCstring = today.toUTCString();
+                        console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + val);
                         firstcloud.set('☁ ' + secondName, value);
                         var today = new Date();
                         var UTCstring = today.toUTCString();
-                        console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + val + "\n");
+                        console.log("At " + UTCstring + " " + firstProjectId + " sent " + secondProjectId + " the value " + val);
                     }
                 });
             });
