@@ -18,14 +18,14 @@ var createBridges = function(start, end, user) {
                 firstcloud.on('set', function(name, value) {
                     if (name === '☁ ' + firstName) {
                         secondcloud.set('☁ ' + secondName, value);
-                        console.log("At " + (new Date).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
+                        console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
                     }
                 });
                 if(!oneWay){
                     secondcloud.on('set', function(name, value) {
                         if (name === '☁ ' + secondName) {
                             firstcloud.set('☁ ' + firstName, value);
-                            console.log("At " + (new Date).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
+                            console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
                         }
                     }
                 }
