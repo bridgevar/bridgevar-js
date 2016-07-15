@@ -11,6 +11,7 @@ var createBridges = function(start, end, user) {
         var secondProjectId = bridgeUsers.users[i].secondProjectId;
         var firstName = bridgeUsers.users[i].firstName;
         var secondName = bridgeUsers.users[i].secondName;
+        var oneWay = bridgeUsers.users[i].oneway;
         var myi = i;
         user.cloudSession(firstProjectId, function(err, firstcloud) {
             user.cloudSession(secondProjectId, function(err, secondcloud) {
@@ -20,11 +21,14 @@ var createBridges = function(start, end, user) {
                         console.log("At " + (new Date).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
                     }
                 });
-                secondcloud.on('set', function(name, value) {
-                    if (name === '☁ ' + secondName) {
-                        firstcloud.set('☁ ' + firstName, value);
-                        console.log("At " + (new Date).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
+                if(!oneWay){
+                    secondcloud.on('set', function(name, value) {
+                        if (name === '☁ ' + secondName) {
+                            firstcloud.set('☁ ' + firstName, value);
+                            console.log("At " + (new Date).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
+                        }
                     }
+                }
                 });
             });
         });
@@ -35,6 +39,6 @@ Scratch.UserSession.create(username, password, function(err, user) {
     user.cloudSession(statusId, function(err, statusSession) {
         var pulse = function(session) {session.set(serverId, Date.now()); setTimeout(pulse, 50000, session)};
         pulse(statusSession);
-        createBridges(0,1,user)
+        createBridges(0,bridgeUsers.length,user)
     });
 });
