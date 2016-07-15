@@ -27,9 +27,8 @@ var createBridges = function(start, end, user) {
                             firstcloud.set('☁ ' + firstName, value);
                             console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
                         }
-                    }
-                }
-                });
+					});
+				}
             });
         });
         
