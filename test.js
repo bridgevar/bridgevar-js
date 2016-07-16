@@ -14,39 +14,19 @@ var createBridges = function(start, end, user) {
         var oneWay = bridgeUsers.users[i].oneway;
         var myi = i;
         user.cloudSession(firstProjectId, function(err, firstcloud) {
-            user.cloudSession(secondProjectId, function(err,
-                secondcloud) {
+            user.cloudSession(secondProjectId, function(err, secondcloud) {
                 firstcloud.on('set', function(name, value) {
                     if (name === '☁ ' + firstName) {
-                        secondcloud.set('☁ ' +
-                            secondName, value);
-                        console.log("At " + (new Date())
-                            .toUTCstring() +
-                            " " +
-                            firstProjectId +
-                            " sent " +
-                            secondProjectId +
-                            " the value " +
-                            value.toString());
+                        secondcloud.set('☁ ' + secondName, value);
+                        console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
                     }
                 });
                 if (!oneWay) {
                     secondcloud.on('set', function(name,
                         value) {
-                        if (name === '☁ ' +
-                            secondName) {
-                            firstcloud.set('☁ ' +
-                                firstName,
-                                value);
-                            console.log("At " + (
-                                    new Date())
-                                .toUTCstring() +
-                                " " +
-                                firstProjectId +
-                                " sent " +
-                                secondProjectId +
-                                " the value " +
-                                value.toString()
+                        if (name === '☁ ' + secondName) {
+                            firstcloud.set('☁ ' + firstName, value);
+                            console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString()
                             );
                         }
                     });
