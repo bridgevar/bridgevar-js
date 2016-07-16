@@ -6,7 +6,7 @@ var username = 'bridgevar';
 var password = 'password';
 var val = "";
 var createBridges = function(start, end, user) {
-    for (var i=start; i<end; i++) {
+    for (var i = start; i < end; i++) {
         var firstProjectId = bridgeUsers.users[i].firstProjectId;
         var secondProjectId = bridgeUsers.users[i].secondProjectId;
         var firstName = bridgeUsers.users[i].firstName;
@@ -21,23 +21,27 @@ var createBridges = function(start, end, user) {
                         console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
                     }
                 });
-                if(!oneWay){
-                    secondcloud.on('set', function(name, value) {
+                if (!oneWay) {
+                    secondcloud.on('set', function(name,
+                        value) {
                         if (name === '☁ ' + secondName) {
                             firstcloud.set('☁ ' + firstName, value);
-                            console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
+                            console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString()
+                            );
                         }
-					});
-				}
+                    });
+                }
             });
         });
-        
     }
 }
 Scratch.UserSession.create(username, password, function(err, user) {
     user.cloudSession(statusId, function(err, statusSession) {
-        var pulse = function(session) {session.set(serverId, Date.now()); setTimeout(pulse, 50000, session)};
+        var pulse = function(session) {
+            session.set(serverId, Date.now());
+            setTimeout(pulse, 50000, session)
+        };
         pulse(statusSession);
-        createBridges(0,bridgeUsers.length,user)
+        createBridges(0, bridgeUsers.length, user)
     });
 });
