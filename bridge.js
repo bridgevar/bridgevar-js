@@ -15,7 +15,7 @@ var createBridges = function(start, end, user) {
         var myi = i;
         user.cloudSession(firstProjectId, function(err, firstcloud) {
             user.cloudSession(secondProjectId, function(err, secondcloud) {
-                if (!oneWay & firstcloud.get('☁ bridgeVar' != 2) {
+                if (firstcloud.get('☁ bridgeVar' != 2) {
                     if (firstcloud.get('☁ bridgeVar' != 0) {
                         firstcloud.on('set', function(name, value) {
                             if (name === '☁ ' + firstName) {
