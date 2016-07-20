@@ -15,21 +15,31 @@ var createBridges = function(start, end, user) {
         var myi = i;
         user.cloudSession(firstProjectId, function(err, firstcloud) {
             user.cloudSession(secondProjectId, function(err, secondcloud) {
-                firstcloud.on('set', function(name, value) {
-                    if (name === '☁ ' + firstName) {
-                        secondcloud.set('☁ ' + secondName, value);
-                        console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
+                if (firstcloud.get('☁ bridgeVar' != 2) {
+                    if (firstcloud.get('☁ bridgeVar' != 0) {
+                        firstcloud.on('set', function(name, value) {
+                            if (name === '☁ ' + firstName) {
+                                secondcloud.set('☁ ' + secondName, value);
+                                console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString());
+                            }
+                        });
                     }
-                });
-                if (!oneWay) {
-                    secondcloud.on('set', function(name,
-                        value) {
-                        if (name === '☁ ' + secondName) {
-                            firstcloud.set('☁ ' + firstName, value);
-                            console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString()
-                            );
-                        }
-                    });
+                    if (!oneWay & firstcloud.get('☁ bridgeVar' != 1) {
+                            secondcloud.on('set', function(name,
+                                value) {
+                                if (name === '☁ ' + secondName) {
+                                    firstcloud.set('☁ ' + firstName, value);
+                                    console.log("At " + (new Date()).toUTCstring() + " " + firstProjectId + " sent " + secondProjectId + " the value " + value.toString()
+                                    );
+                                }
+                            });
+                    }
+                }
+                if (firstcloud.get('☁ bridgeVar' === 7) {
+                    firstcloud.set('☁ bridgeVar', 3);
+                }
+                if (secondcloud.get('☁ bridgeVar' === 7) {
+                    secondcloud.set('☁ bridgeVar', 3);
                 }
             });
         });
