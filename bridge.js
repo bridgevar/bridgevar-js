@@ -36,6 +36,7 @@ var createBridges = function(start, end, user) {
     }
 }
 Scratch.UserSession.create(username, password, function(err, user) {
+    if(err != 0) console.log(err);
     user.cloudSession(statusId, function(err, statusSession) {
         var pulse = function(session) {
             session.set(serverId, Date.now());
